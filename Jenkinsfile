@@ -2,7 +2,7 @@ pipeline {
   agent {
     kubernetes {
       label 'jenkins-agent-flask-app'
-      yaml '''
+      yaml """
 apiVersion: v1
 kind: Pod
 metadata:
@@ -32,8 +32,8 @@ spec:
 
 """
     }
-
   }
+
   stages {
     stage('Test python') {
       steps {
