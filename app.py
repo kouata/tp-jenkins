@@ -12,8 +12,8 @@ def hello_user(username):
     return 'Hello %s!\n' % username
 
 @app.route('/feature/<string>') # dynamic route
-def hello_user(string):
-    return 'Hello %s!\n' % sting
+def hello_feature(string):
+    return 'Hello %s!\n' % string
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0') # open for everyone
