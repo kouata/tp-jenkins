@@ -1,5 +1,8 @@
 
 pipeline {
+    triggers {
+      pollSCM('* * * * *')
+  }
   agent {
     kubernetes {
       // this label will be the prefix of the generated pod's name
