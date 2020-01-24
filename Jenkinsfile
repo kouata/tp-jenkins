@@ -1,10 +1,8 @@
-
 pipeline {
   agent {
     kubernetes {
-      // this label will be the prefix of the generated pod's name
       label 'jenkins-agent-flask-app'
-      yaml """
+      yaml '''
 apiVersion: v1
 kind: Pod
 metadata:
@@ -34,20 +32,20 @@ spec:
 
 """
     }
-  }
 
+  }
   stages {
     stage('Test python') {
       steps {
-        container('python') {
-          sh "pip install -r requirements.txt"
-          sh "python test.py"
+        container(name: 'python') {
+          sh 'pip install -r requirements.txt'
+          sh 'python test.py'
         }
+
       }
     }
-  }
 
-      stage('Build image') {
+    stage('Build image') {
       steps {
         container('docker') {
           sh "docker build -t localhost:4000/pythontest:latest ."
